@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RusadaModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AircraftSighting">
+    <Key>
+      <PropertyRef Name="SightingId" />
+    </Key>
+    <Property Name="SightingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Make" Type="nvarchar" MaxLength="128" />
+    <Property Name="Model" Type="nvarchar" MaxLength="128" />
+    <Property Name="Registration" Type="nvarchar" MaxLength="128" />
+    <Property Name="Location" Type="nvarchar" MaxLength="255" />
+    <Property Name="Date_and_Time" Type="datetime" />
+    <Property Name="photo" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityContainer Name="RusadaModel1StoreContainer">
+    <EntitySet Name="AircraftSighting" EntityType="Self.AircraftSighting" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

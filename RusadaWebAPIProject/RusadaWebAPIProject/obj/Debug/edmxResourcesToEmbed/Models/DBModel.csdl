@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AircraftSighting">
+    <Key>
+      <PropertyRef Name="SightingId" />
+    </Key>
+    <Property Name="SightingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Make" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Registration" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Date_and_Time" Type="DateTime" Precision="3" />
+    <Property Name="photo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AircraftSightings" EntityType="Self.AircraftSighting" />
+  </EntityContainer>
+</Schema>

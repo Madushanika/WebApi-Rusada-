@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title> AircraftSighting  App  </title>
+    <meta charset="utf-8" />
+    <style>
+        /*make the error messages red*/
+        .validationMessage {
+            color: red
+        }
+    </style>
+    <!-- CSS -->
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+
+
+</head>
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="MainPage.html">AircraftSighting Details</a>
+            </div> <!-- END HEADER NAV -->
+
+        </div> <!-- END CONTAINER -->
+
+    </nav><!-- END NAV-->
+
+    <div class="container" style="margin-top: 7%;">
+
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <!-- FORM -->
+                <div class="panel panel-default">
+
+                    <div class="panel-heading"> <span class="glyphicon glyphicon glyphicon-tag" aria-hidden="true"></span> <b>Add New Plane Details</b></div>
+                    <div class="panel-body">
+                        <div class="col-md-4">
+                            <form>
+
+                                <div class="form-group" style="display:none;">
+                                    <label for="SightingId">Sighting ID</label>
+                                    <input type="text" id="SightingId" class="form-control" data-bind="value:SightingId" placeholder="SightingId" />
+                                </div><!-- END Plane ID -->
+
+                                <div class="form-group">
+                                    <label for="Make">Make</label>
+                                    <input type="text" id="Make" class="form-control" data-bind="value:Make" placeholder="Make" />
+                                </div><!-- END Make NAME -->
+
+                                <div class="form-group">
+                                    <label for="Model">Model</label>
+                                    <input type="text" id="Model" class="form-control" data-bind="value: Model" placeholder="Model" />
+                                </div><!-- END Model NAME -->
+
+                                <div class="form-group">
+                                    <label for="Registration">Registration</label>
+                                    <input type="text" id="Registration" class="form-control" data-bind="value: Registration" placeholder="Registration" />
+                                </div> <!-- END EMAIL -->
+
+                                <button type="button" class="btn btn-success" data-bind="click: addNewAircraftSighting" id="SaveAircraftSighting">
+                                    <span class="glyphicon  glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
+                                </button>
+
+                                <button type="button" class="btn btn-info" data-bind="click: clearFieldsAircraftSighting" id="ClearAircraftSighting">
+                                    <span class="glyphicon  glyphicon glyphicon-refresh" aria-hidden="true"></span> Clear
+                                </button>
+
+                                <button type="button" class="btn btn-warning" data-bind="click:updateAircraftSighting " style="display:none;" id="UpdateAircraftSighting">
+                                    <span class="glyphicon  glyphicon glyphicon-pencil" aria-hidden="true"></span> Update 
+                                </button>
+
+                                <button type="button" class="btn btn-default" data-bind="click:cancelAircraftSighting " style="display:none;" id="CancelAircraftSighting">
+                                    <span class="glyphicon  glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
+                                </button>
+
+                            </form> <!-- END FORM -->
+
+
+                        </div>
+
+
+                        <div class="col-md-4" style="  float: left;">
+                            <div class="form-group">
+                                <label for="Location">Location</label>
+                                <input type="text" id="Location" class="form-control" data-bind="value: Location" placeholder="Location" style="height:70px" />
+                            </div> <!-- END EMAIL -->
+                            <br />
+                            <div>
+                                <label for="Date_and_Time">Date_and_Time</label>
+                                <input type="datetime-local" id="Date_and_Time" name="Date_and_Time" class="form-control" data-bind="value: Date_and_Time">
+                            </div>
+
+
+                        </div> <!-- END EMAIL -->
+
+                        <div class="col-md-4" style="  float: left;">
+                            <div class="form-group">
+                                <label for="photo">photo</label>
+                                <br />
+                                <div style=" height:170px;">
+
+                                    <img id="blah" src="img/preview_photos_icon.png" alt="your image" style="width: 250px;height: 170px; border: double;" />
+
+                                </div>
+                                <br />
+                                <input class="form-control-file co" accept="image/*" type='file' id="img" data-bind="value: photo" />
+
+
+
+
+
+                            </div> <!-- END EMAIL -->
+
+
+                        </div> <!-- END EMAIL -->
+
+
+
+
+                    </div> <!-- END PANEL BODY-->
+
+                </div><!-- END PANEL-->
+
+            </div> <!-- END  col-md-4 -->
+
+        </div> <!--End Row-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <span class="glyphicon  glyphicon glyphicon-zoom-in" aria-hidden="true"></span>  <b>AircraftSighting List </b>
+
+                        <!---------------search Bar------------->
+                        <div style="float:right">
+                            <input type="text" placeholder="Search.." name="filter" data-bind="textInput: filter" id="filter">
+
+                            <span class="glyphicon  glyphicon glyphicon-zoom-in"></span>
+
+                        </div>
+
+                        <!---------------end search Bar------------->
+
+
+
+
+
+                        <div class="loadingZone" style="color: #000; display:block; float:right; display:none;"> <!--<img src="images/ajax-loader.gif" />--> Refresh Data ...</div>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <table class="table table-hover">
+
+                            <thead>
+                                <tr>
+
+                                    <th>#</th>
+                                    <th>Make</th>
+                                    <th>Model</th>
+                                    <th>Registration</th>
+                                    <th>Location</th>
+                                    <th>Date_and_Time</th>
+                                    <th>photo</th>
+                                    <th></th>
+                                    <th><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></th>
+
+                                </tr>
+                            </thead> <!-- END THEAD -->
+
+                            <tbody data-bind="foreach: visibleAircraftSighting">
+                                <!--"foreach: planeList">-->
+
+                                <tr>
+
+
+                                    <td> <span data-bind="text: SightingId"></span> </td>
+                                    <td> <span data-bind="text: Make"></span></td>
+                                    <td> <span data-bind="text: Model"></span></td>
+                                    <td> <span data-bind="text: Registration"></span> </td>
+                                    <td> <span data-bind="text: Location"></span> </td>
+                                    <td> <span data-bind="text: Date_and_Time"></span> </td>
+                                    <td> <span data-bind="text: photo"></span> </td>
+
+                                    <td>
+
+                                        <button type="button" class="btn btn-danger btn-xs">
+                                            <span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true" data-bind="click: $root.deleteAircraftSighting"></span>
+                                        </button>
+                                    <td> <button type="button" class="glyphicon glyphicon glyphicon-xs" data-bind="click: $root.detailAircraftSighting"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button> </td>
+
+
+                                </tr>
+
+
+
+                            </tbody> <!-- END TBODY -->
+
+                        </table> <!-- END TABLE -->
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+
+
+       
+
+
+
+    </div> <!-- END CONTAINER-->
+
+    
+    <!-- JS -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="Scripts/jquery-3.3.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/knockout-3.5.1.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <!-- app.js-->
+    <script src="Scripts/app1.js"></script>
+    <script src="Scripts/knockout.validation.js"></script>
+    <script src="Scripts/knockout.validation.min.js"></script>
+
+
+</body>
+</html>
